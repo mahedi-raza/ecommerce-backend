@@ -1,27 +1,17 @@
 package com.ecommerce_backend.Dto.Request;
 
-public class UserRequestDto {
+public class LoginRequestDto {
 
-    private String name;
     private String email;
     private String password;
 
-    public UserRequestDto() {
+    public LoginRequestDto() {
 
     }
 
-    public UserRequestDto(String name, String email, String password) {
-        this.name = name;
+    public LoginRequestDto(String email, String password) {
         this.email = email;
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {

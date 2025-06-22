@@ -12,14 +12,15 @@ public class UserMapper {
         User user = new User();
         user.setName(userRequestDto.getName());
         user.setEmail(userRequestDto.getEmail());
+        user.setPassword(userRequestDto.getPassword());
         return user;
     }
 
     public UserResponseDto toDto(User user) {
-        UserResponseDto categoryResponseDto = new UserResponseDto();
-        categoryResponseDto.setUserId(user.getUserId());
-        categoryResponseDto.setName(user.getName());
-        categoryResponseDto.setEmail(user.getEmail());
-        return categoryResponseDto;
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setUserId(user.getUserId());
+        userResponseDto.setName(user.getName());
+        userResponseDto.setEmail(user.getEmail());
+        return userResponseDto;
     }
 }
