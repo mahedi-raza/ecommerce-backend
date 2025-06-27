@@ -6,6 +6,7 @@ import com.ecommerce_backend.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/categories")
     public ResponseEntity<CategoryResponseDto> createCategory(@RequestBody CategoryRequestDto categoryRequestDto){
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(categoryRequestDto));
@@ -35,6 +36,7 @@ public class CategoryController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/categories/{categoryId}")
     public ResponseEntity<CategoryResponseDto> updateCategory(@PathVariable long categoryId, @RequestBody CategoryRequestDto categoryRequestDto){
         CategoryResponseDto updatedCategory = categoryService.updateCategory(categoryId, categoryRequestDto);
@@ -42,6 +44,7 @@ public class CategoryController {
     }
 
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/categories/{categoryId}")
     public ResponseEntity<Void> deleteCategory(@PathVariable long categoryId) {
         categoryService.deleteCategory(categoryId);
